@@ -42,9 +42,9 @@ const prompt = ai.definePrompt({
   3.  Suggestions for improving the code.
 
   Code Snippet:
-  ```
+  \`\`\`
   {{{codeSnippet}}}
-  ````,
+  \`\`\``,
 });
 
 const codeExplainerFlow = ai.defineFlow(
