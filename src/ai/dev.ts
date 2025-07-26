@@ -10,3 +10,4 @@ import '@/ai/flows/whois-lookup.ts';
 import '@/ai/flows/port-scanner.ts';
 import '@/ai/flows/lorem-ipsum-generator.ts';
 import '@/ai/flows/vulnerability-scanner.ts';
+import '@/ai/flows/firewall-simulator.ts';
