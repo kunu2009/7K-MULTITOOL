@@ -90,7 +90,7 @@ export const toolsConfig: ToolCategory[] = [
     tools: [
       { name: 'JSON Formatter', slug: 'json-formatter', description: 'Beautify or minify JSON data.', icon: FileJson, category: 'developer', implemented: true },
       { name: 'Regex Tester', slug: 'regex-tester', description: 'Test regular expressions.', icon: Regex, category: 'developer', implemented: true },
-      { name: 'Lorem Ipsum Generator', slug: 'lorem-ipsum-generator', description: 'Generate placeholder text.', icon: MessageSquare, category: 'developer', implemented: false },
+      { name: 'Lorem Ipsum Generator', slug: 'lorem-ipsum-generator', description: 'Generate placeholder text.', icon: MessageSquare, category: 'developer', implemented: true },
       { name: 'QR Code Generator', slug: 'qr-code-generator', description: 'Generate QR codes.', icon: QrCode, category: 'developer', implemented: false },
       { name: 'UUID Generator', slug: 'uuid-generator', description: 'Generate UUIDs.', icon: FingerprintIcon, category: 'developer', implemented: false },
       { name: 'HTML Entities', slug: 'html-entities', description: 'Encode/decode HTML entities.', icon: CodeXml, category: 'developer', implemented: false },
