@@ -46,16 +46,17 @@ export default function ToolsLayout({
                 <SidebarGroupLabel>{category.name}</SidebarGroupLabel>
                 {category.tools.map((tool) => (
                   <SidebarMenuItem key={tool.slug}>
-                    <Link href={tool.implemented ? `/tools/${tool.slug}` : '#'}>
-                      <SidebarMenuButton
-                        isActive={pathname === `/tools/${tool.slug}`}
-                        disabled={!tool.implemented}
-                        tooltip={tool.name}
-                      >
+                    <SidebarMenuButton
+                      asChild
+                      isActive={pathname === `/tools/${tool.slug}`}
+                      disabled={!tool.implemented}
+                      tooltip={tool.name}
+                    >
+                      <Link href={tool.implemented ? `/tools/${tool.slug}` : '#'}>
                         <tool.icon className="size-4" />
                         <span>{tool.name}</span>
-                      </SidebarMenuButton>
-                    </Link>
+                      </Link>
+                    </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
               </SidebarGroup>
