@@ -76,7 +76,7 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'IP Info Viewer', slug: 'ip-info-viewer', description: 'View information about an IP address.', icon: Network, category: 'security', implemented: true },
       { name: 'DNS Lookup', slug: 'dns-lookup', description: 'Perform DNS lookups.', icon: Dna, category: 'security', implemented: true },
       { name: 'WHOIS Lookup', slug: 'whois-lookup', description: 'Perform WHOIS lookups.', icon: BookUser, category: 'security', implemented: true },
-      { name: 'Port Scanner', slug: 'port-scanner', description: 'Scan for open ports (educational).', icon: ScanLine, category: 'security', implemented: false },
+      { name: 'Port Scanner', slug: 'port-scanner', description: 'Scan for open ports (educational).', icon: ScanLine, category: 'security', implemented: true },
       { name: 'Vulnerability Scanner', slug: 'vulnerability-scanner', description: 'Scan for web vulnerabilities.', icon: ShieldAlert, category: 'security', implemented: false },
       { name: 'Firewall Simulator', slug: 'firewall-simulator', description: 'Simulate firewall configurations.', icon: ServerCog, category: 'security', implemented: false },
       { name: 'SSL/TLS Checker', slug: 'ssl-tls-checker', description: 'Check SSL/TLS certificate details.', icon: ShieldCheck, category: 'security', implemented: false },
