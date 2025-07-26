@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { LegalDisclaimer } from '@/components/legal-disclaimer';
-import { Loader2, ScanLine, HelpCircle, CheckCircle, XCircle, ShieldQuestion } from 'lucide-react';
+import { Loader2, ScanLine, HelpCircle, ShieldQuestion } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -41,9 +41,9 @@ const getStatusColor = (status: string) => {
 
 const getConfidenceColor = (confidence: string) => {
     switch (confidence) {
-        case 'High': return 'bg-green-100 text-green-800';
-        case 'Medium': return 'bg-yellow-100 text-yellow-800';
-        case 'Low': return 'bg-red-100 text-red-800';
+        case 'High': return 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300';
+        case 'Medium': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300';
+        case 'Low': return 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300';
         default: return 'bg-muted text-muted-foreground';
     }
 }
@@ -97,7 +97,7 @@ export default function PortScannerPage() {
           <CardHeader>
             <CardTitle>Simulated Scan Results</CardTitle>
             <CardDescription>{state.data.summary}</CardDescription>
-          </Header>
+          </CardHeader>
           <CardContent>
             <Table>
                 <TableHeader>
