@@ -124,7 +124,7 @@ export const toolsConfig: ToolCategory[] = [
     id: 'advanced',
     tools: [
       { name: 'Steganography Encoder', slug: 'steganography-encoder', description: 'Hide text within images.', icon: Eye, category: 'advanced', implemented: true },
-      { name: 'Caesar Cipher', slug: 'caesar-cipher', description: 'Simple substitution cipher.', icon: Key, category: 'advanced', implemented: false },
+      { name: 'Caesar Cipher', slug: 'caesar-cipher', description: 'Simple substitution cipher.', icon: Key, category: 'advanced', implemented: true },
       { name: 'Port Binding Visualizer', slug: 'port-visualizer', description: 'Visualize local port usage.', icon: Briefcase, category: 'advanced', implemented: false },
       { name: 'File Integrity Checker', slug: 'file-integrity-checker', description: 'Generate and verify file checksums.', icon: Database, category: 'advanced', implemented: false },
     ],
