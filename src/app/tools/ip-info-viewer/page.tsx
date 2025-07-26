@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import { getIpInfoAction, IpInfoState } from './actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
@@ -49,7 +49,7 @@ function ResultCard({ title, icon, data }: { title: string, icon: React.ReactNod
 }
 
 export default function IpInfoViewerPage() {
-  const [state, formAction] = useFormState(getIpInfoAction, initialState);
+  const [state, formAction] = React.useActionState(getIpInfoAction, initialState);
   const [ipAddress, setIpAddress] = React.useState('');
 
   const myIpFormRef = React.useRef<HTMLFormElement>(null);

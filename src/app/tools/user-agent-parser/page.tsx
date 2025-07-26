@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import { parseUserAgentAction, ParserState } from './actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
@@ -49,7 +49,7 @@ function ResultCard({ title, icon, data }: { title: string, icon: React.ReactNod
 }
 
 export default function UserAgentParserPage() {
-  const [state, formAction] = useFormState(parseUserAgentAction, initialState);
+  const [state, formAction] = React.useActionState(parseUserAgentAction, initialState);
   const [userAgent, setUserAgent] = React.useState('');
   
   const handleDetect = () => {
