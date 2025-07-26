@@ -1,6 +1,7 @@
 'use server';
 
-import { portScanner, PortScannerOutput } from '@/ai/flows/port-scanner';
+import { portScanner } from '@/ai/flows/port-scanner';
+import { type PortScannerOutput } from '@/ai/schemas/port-scanner';
 import { z } from 'zod';
 
 const schema = z.object({
