@@ -80,7 +80,7 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'Vulnerability Scanner', slug: 'vulnerability-scanner', description: 'Scan for web vulnerabilities.', icon: ShieldAlert, category: 'security', implemented: true },
       { name: 'Firewall Simulator', slug: 'firewall-simulator', description: 'Simulate firewall configurations.', icon: ServerCog, category: 'security', implemented: true },
       { name: 'SSL/TLS Checker', slug: 'ssl-tls-checker', description: 'Check SSL/TLS certificate details.', icon: ShieldCheck, category: 'security', implemented: true },
-      { name: 'Packet Sniffer', slug: 'packet-sniffer', description: 'Capture and analyze network packets.', icon: ShieldQuestion, category: 'security', implemented: false },
+      { name: 'Packet Sniffer', slug: 'packet-sniffer', description: 'Capture and analyze network packets.', icon: ShieldQuestion, category: 'security', implemented: true },
       { name: 'AI Code Explainer', slug: 'ai-code-explainer', description: 'Explain code and find vulnerabilities.', icon: Bot, category: 'security', implemented: true },
     ],
   },
