@@ -108,7 +108,7 @@ export const toolsConfig: ToolCategory[] = [
     tools: [
       { name: 'Number to Words', slug: 'number-to-words', description: 'Convert numbers to words.', icon: Replace, category: 'general', implemented: true },
       { name: 'Age Calculator', slug: 'age-calculator', description: 'Calculate age from date of birth.', icon: Calculator, category: 'general', implemented: true },
-      { name: 'Word/Character Counter', slug: 'word-counter', description: 'Count words and characters in text.', icon: ScanText, category: 'general', implemented: false },
+      { name: 'Word/Character Counter', slug: 'word-counter', description: 'Count words and characters in text.', icon: ScanText, category: 'general', implemented: true },
       { name: 'Stopwatch & Timer', slug: 'stopwatch', description: 'Online stopwatch and countdown timer.', icon: Timer, category: 'general', implemented: false },
       { name: 'Text Cleaner', slug: 'text-cleaner', description: 'Remove extra spaces and newlines.', icon: BookText, category: 'general', implemented: false },
       { name: 'Secure Notes', slug: 'secure-notes', description: 'Client-side encrypted notes.', icon: LockKeyhole, category: 'general', implemented: false },
