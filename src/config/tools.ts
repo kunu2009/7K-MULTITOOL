@@ -73,7 +73,7 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'AI Code Explainer', slug: 'ai-code-explainer', description: 'Explain code and find vulnerabilities.', icon: Bot, category: 'security', implemented: true },
       { name: 'URL Encoder/Decoder', slug: 'url-encoder-decoder', description: 'Encode/decode URL components.', icon: Link, category: 'security', implemented: true },
       { name: 'User-Agent Parser', slug: 'user-agent-parser', description: 'Parse User-Agent strings.', icon: Fingerprint, category: 'security', implemented: true },
-      { name: 'Phishing Simulator', slug: 'phishing-simulator', description: 'Educational phishing simulation.', icon: MailWarning, category: 'security', implemented: false },
+      { name: 'Phishing Simulator', slug: 'phishing-simulator', description: 'Educational phishing simulation.', icon: MailWarning, category: 'security', implemented: true },
       { name: 'IP Info Viewer', slug: 'ip-info-viewer', description: 'View information about an IP address.', icon: Network, category: 'security', implemented: false },
       { name: 'DNS Lookup', slug: 'dns-lookup', description: 'Perform DNS lookups.', icon: Dna, category: 'security', implemented: false },
       { name: 'WHOIS Lookup', slug: 'whois-lookup', description: 'Perform WHOIS lookups.', icon: BookUser, category: 'security', implemented: false },
