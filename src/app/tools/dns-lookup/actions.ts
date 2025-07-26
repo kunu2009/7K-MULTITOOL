@@ -2,9 +2,6 @@
 
 import { dnsLookup, DnsLookupOutput } from '@/ai/flows/dns-lookup';
 import { z } from 'zod';
-import { Ratelimit } from "@upstash/ratelimit";
-import { kv } from "@vercel/kv";
-import { headers } from "next/headers";
 
 const schema = z.object({
   domain: z.string().min(3, "Domain must be at least 3 characters.").refine(val => /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(val), {
@@ -20,19 +17,7 @@ export type DnsState = {
   };
 };
 
-const ratelimit = new Ratelimit({
-  redis: kv,
-  limiter: Ratelimit.slidingWindow(10, "1 m"),
-});
-
 export async function getDnsRecordsAction(prevState: DnsState, formData: FormData): Promise<DnsState> {
-  const ip = headers().get("x-forwarded-for") ?? "127.0.0.1";
-  const { success: limitReached } = await ratelimit.limit(ip);
-
-  if (!limitReached) {
-    return { data: null, message: "Rate limit exceeded. Please try again in a minute." };
-  }
-    
   const validatedFields = schema.safeParse({
     domain: formData.get('domain'),
   });

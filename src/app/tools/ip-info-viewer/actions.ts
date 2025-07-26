@@ -2,8 +2,6 @@
 
 import { viewIpInfo, IpInfoViewerOutput } from '@/ai/flows/ip-info-viewer';
 import { z } from 'zod';
-import { Ratelimit } from "@upstash/ratelimit";
-import { kv } from "@vercel/kv";
 import { headers } from "next/headers";
 
 const schema = z.object({
@@ -18,21 +16,10 @@ export type IpInfoState = {
   };
 };
 
-const ratelimit = new Ratelimit({
-  redis: kv,
-  limiter: Ratelimit.slidingWindow(10, "1 m"),
-});
-
 export async function getIpInfoAction(prevState: IpInfoState, formData: FormData): Promise<IpInfoState> {
   const forwardedFor = headers().get("x-forwarded-for");
   const ip = formData.get('ipAddress') as string || forwardedFor || "127.0.0.1";
   
-  const { success: limitReached } = await ratelimit.limit(forwardedFor || "127.0.0.1");
-
-  if (!limitReached) {
-      return { data: null, message: "Rate limit exceeded. Please try again in a minute." };
-  }
-    
   const validatedFields = schema.safeParse({
     ipAddress: ip,
   });

@@ -2,9 +2,6 @@
 
 import { parseUserAgent, UserAgentParserOutput } from '@/ai/flows/user-agent-parser';
 import { z } from 'zod';
-import { Ratelimit } from "@upstash/ratelimit";
-import { kv } from "@vercel/kv";
-import { headers } from "next/headers";
 
 const schema = z.object({
   userAgent: z.string().min(5, { message: 'User-Agent must be at least 5 characters long.' }).max(500, { message: 'User-Agent cannot exceed 500 characters.' }),
@@ -18,19 +15,7 @@ export type ParserState = {
   };
 };
 
-const ratelimit = new Ratelimit({
-  redis: kv,
-  limiter: Ratelimit.slidingWindow(10, "1 m"),
-});
-
 export async function parseUserAgentAction(prevState: ParserState, formData: FormData): Promise<ParserState> {
-  const ip = headers().get("x-forwarded-for") ?? "127.0.0.1";
-  const { success: limitReached } = await ratelimit.limit(ip);
-
-  if (!limitReached) {
-      return { data: null, message: "Rate limit exceeded. Please try again in a minute." };
-  }
-    
   const validatedFields = schema.safeParse({
     userAgent: formData.get('userAgent'),
   });

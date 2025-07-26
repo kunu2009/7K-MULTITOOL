@@ -2,9 +2,6 @@
 
 import { generatePhishingEmail, PhishingEmailGeneratorOutput } from '@/ai/flows/phishing-email-generator';
 import { z } from 'zod';
-import { Ratelimit } from "@upstash/ratelimit";
-import { kv } from "@vercel/kv";
-import { headers } from "next/headers";
 
 const schema = z.object({
   targetName: z.string().min(2, "Target name must be at least 2 characters.").max(50),
@@ -22,19 +19,7 @@ export type PhishingSimulatorState = {
   };
 };
 
-const ratelimit = new Ratelimit({
-  redis: kv,
-  limiter: Ratelimit.slidingWindow(5, "1 m"),
-});
-
 export async function generateEmailAction(prevState: PhishingSimulatorState, formData: FormData): Promise<PhishingSimulatorState> {
-  const ip = headers().get("x-forwarded-for") ?? "127.0.0.1";
-  const { success: limitReached } = await ratelimit.limit(ip);
-
-  if (!limitReached) {
-      return { data: null, message: "Rate limit exceeded. Please try again in a minute." };
-  }
-    
   const validatedFields = schema.safeParse({
     targetName: formData.get('targetName'),
     companyName: formData.get('companyName'),
