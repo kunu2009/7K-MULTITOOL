@@ -2,7 +2,6 @@
 'use client';
 
 import * as React from 'react';
-import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { parseUserAgentAction, ParserState } from './actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -51,7 +50,7 @@ function ResultCard({ title, icon, data }: { title: string, icon: React.ReactNod
 }
 
 export default function UserAgentParserPage() {
-  const [state, formAction] = useActionState(parseUserAgentAction, initialState);
+  const [state, setState] = React.useState<ParserState>(initialState);
   const [userAgent, setUserAgent] = React.useState('');
   
   const handleDetect = () => {
@@ -59,6 +58,11 @@ export default function UserAgentParserPage() {
         setUserAgent(navigator.userAgent);
     }
   }
+
+  const formAction = async (formData: FormData) => {
+    const result = await parseUserAgentAction(initialState, formData);
+    setState(result);
+  };
 
   return (
     <div className="space-y-6">

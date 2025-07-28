@@ -2,7 +2,6 @@
 'use client';
 
 import * as React from 'react';
-import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { scanPortsAction, PortScannerState } from './actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -50,7 +49,12 @@ const getConfidenceColor = (confidence: string) => {
 }
 
 export default function PortScannerPage() {
-  const [state, formAction] = useActionState(scanPortsAction, initialState);
+  const [state, setState] = React.useState<PortScannerState>(initialState);
+
+  const formAction = async (formData: FormData) => {
+    const result = await scanPortsAction(initialState, formData);
+    setState(result);
+  };
 
   return (
     <div className="space-y-6">

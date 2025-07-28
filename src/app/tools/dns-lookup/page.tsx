@@ -2,7 +2,6 @@
 'use client';
 
 import * as React from 'react';
-import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { getDnsRecordsAction, DnsState } from './actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -67,7 +66,12 @@ function ResultTable({ title, records }: { title: string, records: Record[] | un
 }
 
 export default function DnsLookupPage() {
-  const [state, formAction] = useActionState(getDnsRecordsAction, initialState);
+  const [state, setState] = React.useState<DnsState>(initialState);
+
+  const formAction = async (formData: FormData) => {
+    const result = await getDnsRecordsAction(initialState, formData);
+    setState(result);
+  };
 
   return (
     <div className="space-y-6">

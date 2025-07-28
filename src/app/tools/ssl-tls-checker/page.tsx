@@ -2,7 +2,6 @@
 'use client';
 
 import * as React from 'react';
-import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { checkSslAction, SslCheckState } from './actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -59,7 +58,12 @@ function InfoCard({ title, icon, data }: { title: string; icon: React.ReactNode;
 }
 
 export default function SslTlsCheckerPage() {
-  const [state, formAction] = useActionState(checkSslAction, initialState);
+  const [state, setState] = React.useState<SslCheckState>(initialState);
+
+  const formAction = async (formData: FormData) => {
+    const result = await checkSslAction(initialState, formData);
+    setState(result);
+  };
 
   return (
     <div className="space-y-6">

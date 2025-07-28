@@ -2,7 +2,7 @@
 'use client';
 
 import * as React from 'react';
-import { useActionState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import { generateLoremIpsumAction, LoremIpsumState } from './actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
@@ -29,8 +29,13 @@ function SubmitButton() {
 }
 
 export default function LoremIpsumGeneratorPage() {
-  const [state, formAction] = useActionState(generateLoremIpsumAction, initialState);
+  const [state, setState] = React.useState<LoremIpsumState>(initialState);
   const { toast } = useToast();
+
+  const formAction = async (formData: FormData) => {
+    const result = await generateLoremIpsumAction(initialState, formData);
+    setState(result);
+  };
 
   const handleCopy = () => {
     if (state.data?.text) {

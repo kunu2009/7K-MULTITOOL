@@ -2,7 +2,6 @@
 'use client';
 
 import * as React from 'react';
-import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { convertNumberAction, NumberToWordsState } from './actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -30,8 +29,13 @@ function SubmitButton() {
 }
 
 export default function NumberToWordsPage() {
-  const [state, formAction] = useActionState(convertNumberAction, initialState);
+  const [state, setState] = React.useState<NumberToWordsState>(initialState);
   const { toast } = useToast();
+
+  const formAction = async (formData: FormData) => {
+    const result = await convertNumberAction(initialState, formData);
+    setState(result);
+  };
 
   const handleCopy = () => {
     if (state.data?.words) {

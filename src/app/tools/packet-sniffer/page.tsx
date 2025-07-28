@@ -2,7 +2,6 @@
 'use client';
 
 import * as React from 'react';
-import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { simulateCaptureAction, PacketSnifferState } from './actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -40,7 +39,12 @@ const getProtocolBadge = (protocol: string) => {
 }
 
 export default function PacketSnifferPage() {
-  const [state, formAction] = useActionState(simulateCaptureAction, initialState);
+  const [state, setState] = React.useState<PacketSnifferState>(initialState);
+
+  const formAction = async (formData: FormData) => {
+    const result = await simulateCaptureAction(initialState, formData);
+    setState(result);
+  };
 
   return (
     <div className="space-y-6">

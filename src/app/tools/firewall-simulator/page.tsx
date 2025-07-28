@@ -2,7 +2,6 @@
 'use client';
 
 import * as React from 'react';
-import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { simulateFirewallAction, FirewallSimulatorState } from './actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -31,7 +30,12 @@ function SubmitButton() {
 }
 
 export default function FirewallSimulatorPage() {
-  const [state, formAction] = useActionState(simulateFirewallAction, initialState);
+  const [state, setState] = React.useState<FirewallSimulatorState>(initialState);
+
+  const formAction = async (formData: FormData) => {
+    const result = await simulateFirewallAction(initialState, formData);
+    setState(result);
+  };
 
   return (
     <div className="space-y-6">

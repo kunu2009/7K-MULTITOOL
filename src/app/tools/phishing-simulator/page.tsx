@@ -2,7 +2,6 @@
 'use client';
 
 import * as React from 'react';
-import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { generateEmailAction, PhishingSimulatorState } from './actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -31,8 +30,13 @@ function SubmitButton() {
 }
 
 export default function PhishingSimulatorPage() {
-  const [state, formAction] = useActionState(generateEmailAction, initialState);
+  const [state, setState] = React.useState<PhishingSimulatorState>(initialState);
   const [scenario, setScenario] = React.useState('');
+
+  const formAction = async (formData: FormData) => {
+    const result = await generateEmailAction(initialState, formData);
+    setState(result);
+  };
 
   return (
     <div className="space-y-6">

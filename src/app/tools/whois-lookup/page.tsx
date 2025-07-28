@@ -2,7 +2,6 @@
 'use client';
 
 import * as React from 'react';
-import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { getWhoisRecordsAction, WhoisState } from './actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -32,7 +31,12 @@ function SubmitButton() {
 }
 
 export default function WhoisLookupPage() {
-  const [state, formAction] = useActionState(getWhoisRecordsAction, initialState);
+  const [state, setState] = React.useState<WhoisState>(initialState);
+
+  const formAction = async (formData: FormData) => {
+    const result = await getWhoisRecordsAction(initialState, formData);
+    setState(result);
+  };
 
   return (
     <div className="space-y-6">

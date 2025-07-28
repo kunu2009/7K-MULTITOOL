@@ -2,7 +2,6 @@
 'use client';
 
 import * as React from 'react';
-import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { explainCode, ExplanationState } from './actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -31,7 +30,12 @@ function SubmitButton() {
 }
 
 export default function AiCodeExplainerPage() {
-  const [state, formAction] = useActionState(explainCode, initialState);
+  const [state, setState] = React.useState<ExplanationState>(initialState);
+
+  const formAction = async (formData: FormData) => {
+    const result = await explainCode(initialState, formData);
+    setState(result);
+  };
 
   return (
     <div className="space-y-6">
