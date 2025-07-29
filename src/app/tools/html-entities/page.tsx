@@ -39,7 +39,7 @@ export default function HtmlEntitiesPage() {
 
   const handleDecode = () => {
     try {
-      if(encodedText) setEncodedText(decodeEntities(encodedText));
+      if(encodedText) setDecodedText(decodeEntities(encodedText));
     } catch (e) {
       toast({ title: 'Decoding Error', description: 'Could not decode the provided entities.', variant: 'destructive' });
     }
