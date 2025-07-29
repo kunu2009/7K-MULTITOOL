@@ -16,12 +16,14 @@ export default function HtmlEntitiesPage() {
   const [encodedText, setEncodedText] = React.useState('');
 
   const encodeEntities = (text: string) => {
+    if (typeof document === 'undefined') return '';
     const element = document.createElement('div');
     element.innerText = text;
     return element.innerHTML;
   };
   
   const decodeEntities = (text: string) => {
+    if (typeof document === 'undefined') return '';
     const element = document.createElement('textarea');
     element.innerHTML = text;
     return element.value;
@@ -37,7 +39,7 @@ export default function HtmlEntitiesPage() {
 
   const handleDecode = () => {
     try {
-      if(encodedText) setDecodedText(decodeEntities(encodedText));
+      if(encodedText) setEncodedText(decodeEntities(encodedText));
     } catch (e) {
       toast({ title: 'Decoding Error', description: 'Could not decode the provided entities.', variant: 'destructive' });
     }
@@ -127,6 +129,7 @@ export default function HtmlEntitiesPage() {
           </Accordion>
         </CardContent>
       </Card>
+      <LegalDisclaimer />
     </div>
   );
 }
