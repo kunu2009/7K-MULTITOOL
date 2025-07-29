@@ -11,7 +11,10 @@ import { toast } from '@/hooks/use-toast';
 import { LegalDisclaimer } from '@/components/legal-disclaimer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
+// Helper functions are now defined outside and before the component.
 const encodeEntities = (text: string) => {
+  // This check is necessary to prevent errors during server-side rendering,
+  // though for client components it's mainly a safeguard.
   if (typeof document === 'undefined') return '';
   const element = document.createElement('div');
   element.innerText = text;
@@ -23,7 +26,7 @@ const decodeEntities = (text: string) => {
   const element = document.createElement('textarea');
   element.innerHTML = text;
   return element.value;
-}
+};
 
 export default function HtmlEntitiesPage() {
   const [decodedText, setDecodedText] = React.useState('');
