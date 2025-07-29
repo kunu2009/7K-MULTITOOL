@@ -11,23 +11,23 @@ import { toast } from '@/hooks/use-toast';
 import { LegalDisclaimer } from '@/components/legal-disclaimer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
+const encodeEntities = (text: string) => {
+  if (typeof document === 'undefined') return '';
+  const element = document.createElement('div');
+  element.innerText = text;
+  return element.innerHTML;
+};
+
+const decodeEntities = (text: string) => {
+  if (typeof document === 'undefined') return '';
+  const element = document.createElement('textarea');
+  element.innerHTML = text;
+  return element.value;
+}
+
 export default function HtmlEntitiesPage() {
   const [decodedText, setDecodedText] = React.useState('');
   const [encodedText, setEncodedText] = React.useState('');
-
-  const encodeEntities = (text: string) => {
-    if (typeof document === 'undefined') return '';
-    const element = document.createElement('div');
-    element.innerText = text;
-    return element.innerHTML;
-  };
-  
-  const decodeEntities = (text: string) => {
-    if (typeof document === 'undefined') return '';
-    const element = document.createElement('textarea');
-    element.innerHTML = text;
-    return element.value;
-  }
 
   const handleEncode = () => {
     try {
