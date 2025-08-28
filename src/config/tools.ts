@@ -156,7 +156,8 @@ Album,
 Film,
 Layers,
 Terminal,
-FileCheck2
+FileCheck2,
+Waves
 } from 'lucide-react';
 
 export type Tool = {
