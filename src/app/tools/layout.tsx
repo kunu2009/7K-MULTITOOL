@@ -22,6 +22,7 @@ import { toolsConfig } from '@/config/tools';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Github } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export default function ToolsLayout({
   children,
@@ -74,6 +75,7 @@ export default function ToolsLayout({
       <SidebarInset>
         <header className="flex items-center justify-between border-b p-2">
             <SidebarTrigger />
+            <ThemeToggle />
         </header>
         <main className="flex-1 p-4 sm:p-6 md:p-8">{children}</main>
       </SidebarInset>
