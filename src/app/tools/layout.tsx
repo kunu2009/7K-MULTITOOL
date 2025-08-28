@@ -33,8 +33,15 @@ export default function ToolsLayout({
   const pathname = usePathname();
 
   return (
-    <SidebarProvider>
-      <Sidebar>
+    <SidebarProvider defaultOpen={false}>
+      <SidebarInset>
+        <header className="flex items-center justify-between border-b p-2">
+            <SidebarTrigger />
+            <ThemeToggle />
+        </header>
+        <main className="flex-1 p-4 md:p-6">{children}</main>
+      </SidebarInset>
+      <Sidebar side="right" collapsible="icon">
         <SidebarHeader>
           <div className="flex items-center gap-2">
             <Logo className="size-7 text-primary" />
@@ -52,7 +59,11 @@ export default function ToolsLayout({
                       asChild
                       isActive={pathname === `/tools/${tool.slug}`}
                       disabled={!tool.implemented}
-                      tooltip={tool.name}
+                      tooltip={{
+                        children: tool.name,
+                        side: 'left',
+                        align: 'center',
+                      }}
                     >
                       <Link href={tool.implemented ? `/tools/${tool.slug}` : '#'}>
                         <tool.icon className="size-4" />
@@ -73,13 +84,6 @@ export default function ToolsLayout({
           </Button>
         </SidebarFooter>
       </Sidebar>
-      <SidebarInset>
-        <header className="flex items-center justify-between border-b p-2">
-            <SidebarTrigger />
-            <ThemeToggle />
-        </header>
-        <main className="flex-1 p-4 md:p-6">{children}</main>
-      </SidebarInset>
     </SidebarProvider>
   );
 }
