@@ -310,6 +310,8 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'Statistics Helper', slug: 'statistics-helper', description: 'Mean, median, std dev.', icon: Sigma, category: 'math-science', implemented: true },
       { name: 'Chemical Equation Balancer', slug: 'chemical-equation-balancer', description: 'Balance chemical equations.', icon: FlaskRound, category: 'math-science', implemented: true },
       { name: 'Periodic Table Explorer', slug: 'periodic-table', description: 'Interactive periodic table.', icon: Atom, category: 'math-science', implemented: true },
+      { name: 'Unit Circle & Trig Helper', slug: 'trig-helper', description: 'Quick reference for students.', icon: Sigma, category: 'learning', implemented: true },
+      { name: 'Physics Formula Sheet', slug: 'physics-formulas', description: 'Searchable formula library.', icon: Atom, category: 'learning', implemented: true },
     ]
   },
   {
@@ -352,6 +354,8 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'Wi-Fi QR Generator', slug: 'wifi-qr-generator', description: 'Share Wi-Fi credentials easily.', icon: Wifi, category: 'device', implemented: true },
       { name: 'Sensor Tester', slug: 'sensor-tester', description: 'Test gyroscope, etc.', icon: Orbit, category: 'device', implemented: true },
       { name: 'Clipboard Sync (LAN)', slug: 'clipboard-sync', description: 'Sync between devices.', icon: Share2, category: 'device', implemented: true },
+      { name: 'Offline File Share (QR)', slug: 'offline-file-share', description: 'Send files via QR codes.', icon: Share2, category: 'device', implemented: true },
+      { name: 'Custom Alarm Sounds', slug: 'custom-alarm', description: 'Timers with own audio.', icon: AlarmClock, category: 'device', implemented: true },
     ]
   },
   {
@@ -375,8 +379,7 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'Flashcard Quizzer', slug: 'flashcard-maker', description: 'Test yourself with custom cards.', icon: Repeat, category: 'learning', implemented: true },
       { name: 'Spaced Repetition Scheduler', slug: 'spaced-repetition', description: 'Memory optimization.', icon: History, category: 'learning', implemented: true },
       { name: 'Language Word of the Day', slug: 'word-of-day', description: 'Vocab expansion.', icon: TestTube, category: 'learning', implemented: true },
-      { name: 'Unit Circle & Trig Helper', slug: 'trig-helper', description: 'Quick reference for students.', icon: Sigma, category: 'learning', implemented: true },
-      { name: 'Physics Formula Sheet', slug: 'physics-formulas', description: 'Searchable formula library.', icon: Atom, category: 'learning', implemented: true },
+      { name: 'Offline Encyclopedia', slug: 'encyclopedia', description: 'Quick knowledge lookups.', icon: Library, category: 'learning', implemented: true },
     ]
   },
   {
