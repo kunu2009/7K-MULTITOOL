@@ -5,9 +5,8 @@ import * as React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { diffChars } from 'diff';
-import { Button } from '@/components/ui/button';
 
-export default function DiffCheckerPage() {
+export default function TextComparePage() {
   const [textA, setTextA] = React.useState('');
   const [textB, setTextB] = React.useState('');
 
@@ -16,21 +15,21 @@ export default function DiffCheckerPage() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Code Diff Checker</CardTitle>
-        <CardDescription>Compare two code snippets or text blocks to see the differences.</CardDescription>
+        <CardTitle>Text Compare / Diff Tool</CardTitle>
+        <CardDescription>Compare two pieces of text to see the differences.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid md:grid-cols-2 gap-4">
           <Textarea
             value={textA}
             onChange={(e) => setTextA(e.target.value)}
-            placeholder="Paste original text or code here"
+            placeholder="Text A"
             className="min-h-[300px] font-mono"
           />
           <Textarea
             value={textB}
             onChange={(e) => setTextB(e.target.value)}
-            placeholder="Paste modified text or code here"
+            placeholder="Text B"
             className="min-h-[300px] font-mono"
           />
         </div>
