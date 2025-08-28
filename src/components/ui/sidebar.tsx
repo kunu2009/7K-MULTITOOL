@@ -24,7 +24,7 @@ const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
 const SIDEBAR_WIDTH = "16rem"
 const SIDEBAR_WIDTH_MOBILE = "18rem"
-const SIDEBAR_WIDTH_ICON = "3rem"
+const SIDEBAR_WIDTH_ICON = "3.5rem"
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 
 type SidebarContext = {
@@ -181,51 +181,7 @@ const Sidebar = React.forwardRef<
   ) => {
     const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
     
-    // When on mobile and the sidebar should be collapsible to an icon bar,
-    // we render the Sheet for the expanded state, but keep the icon bar visible.
-    if (isMobile && collapsible === 'icon') {
-       return (
-        <>
-          <Sheet open={openMobile} onOpenChange={setOpenMobile}>
-            <SheetContent
-              data-sidebar="sidebar"
-              data-mobile="true"
-              className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
-              style={
-                {
-                  "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
-                } as React.CSSProperties
-              }
-              side={side}
-            >
-              <div className="flex h-full w-full flex-col">{children}</div>
-            </SheetContent>
-          </Sheet>
-          <div
-            ref={ref}
-            className="group peer text-sidebar-foreground md:hidden"
-            data-state="collapsed"
-            data-collapsible="icon"
-            data-variant={variant}
-            data-side={side}
-          >
-            <div className="w-[--sidebar-width-icon]" />
-            <div
-              className={cn("fixed inset-y-0 z-10 flex h-svh w-[--sidebar-width-icon]", side === 'left' ? 'left-0' : 'right-0', className)}
-              {...props}
-            >
-              <div
-                data-sidebar="sidebar"
-                className="flex h-full w-full flex-col bg-sidebar"
-              >
-                {children}
-              </div>
-            </div>
-          </div>
-        </>
-      )
-    }
-
+    // On mobile, the sidebar is always a sheet.
     if (isMobile) {
       return (
         <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
@@ -249,7 +205,7 @@ const Sidebar = React.forwardRef<
     return (
       <div
         ref={ref}
-        className="group peer hidden md:block text-sidebar-foreground"
+        className="group peer hidden text-sidebar-foreground md:block"
         data-state={state}
         data-collapsible={state === "collapsed" ? collapsible : ""}
         data-variant={variant}
@@ -359,8 +315,8 @@ const SidebarInset = React.forwardRef<
       ref={ref}
       className={cn(
         "relative flex min-h-svh flex-1 flex-col bg-background",
-        "peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow",
-         isMobile && "peer-data-[collapsible=icon]:pr-[--sidebar-width-icon]",
+        "md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow",
+         "md:peer-data-[side=left]:pl-[--sidebar-width-icon] md:peer-data-[side=right]:pr-[--sidebar-width-icon]",
         className
       )}
       {...props}

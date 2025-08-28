@@ -34,18 +34,6 @@ export default function ToolsLayout({
 
   return (
     <SidebarProvider defaultOpen={false}>
-      <SidebarInset>
-        <header className="flex items-center justify-between border-b p-2 pr-[calc(var(--sidebar-width-icon)_+_0.5rem)] md:pr-2">
-            <div className="md:hidden">
-              <SidebarTrigger />
-            </div>
-            <div className="hidden md:block">
-              {/* This space can be used for a breadcrumb or title in the future */}
-            </div>
-            <ThemeToggle />
-        </header>
-        <main className="flex-1 p-4 md:p-6">{children}</main>
-      </SidebarInset>
       <Sidebar side="right" collapsible="icon">
         <SidebarHeader className="justify-end">
           <div className="flex items-center gap-2">
@@ -91,6 +79,22 @@ export default function ToolsLayout({
           </Button>
         </SidebarFooter>
       </Sidebar>
+      <SidebarInset>
+        <header className="flex items-center justify-between border-b p-2 pr-4 md:pr-2">
+            <div className="flex items-center gap-2 md:hidden">
+              <SidebarTrigger />
+               <div className="flex items-center gap-2">
+                <Logo className="size-6 text-primary" />
+                <h1 className="text-md font-semibold">7K MultiTool</h1>
+              </div>
+            </div>
+            <div className="hidden md:block">
+              {/* This space can be used for a breadcrumb or title in the future */}
+            </div>
+            <ThemeToggle />
+        </header>
+        <main className="flex-1 p-4 md:p-6">{children}</main>
+      </SidebarInset>
     </SidebarProvider>
   );
 }
