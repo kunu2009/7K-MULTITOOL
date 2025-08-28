@@ -20,3 +20,5 @@ import '@/ai/flows/text-to-speech.ts';
 import '@/ai/flows/summarizer.ts';
 import '@/ai/flows/fake-data-generator.ts';
 import '@/ai/flows/language-detector.ts';
+import '@/ai/flows/grammar-fixer.ts';
+import '@/ai/flows/synonym-finder.ts';
