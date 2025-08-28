@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { toolsConfig } from '@/config/tools';
@@ -11,7 +12,7 @@ export default function ToolsDashboard() {
           A collection of legal, educational, and useful tools across security, developer, and general utility categories.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {toolsConfig.flatMap(category => category.tools).map((tool) => (
           <Link href={tool.implemented ? `/tools/${tool.slug}` : '#'} key={tool.slug} className={!tool.implemented ? 'pointer-events-none' : ''}>
             <Card className={`h-full transition-all hover:shadow-md ${!tool.implemented ? 'opacity-50' : 'hover:border-primary'}`}>
