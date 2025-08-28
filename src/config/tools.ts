@@ -65,6 +65,33 @@ import {
   File,
   Globe,
   ShieldHalf,
+  FileImage,
+  FileDigit,
+  Text,
+  AudioLines,
+  Mic,
+  Barcode,
+  Combine,
+  HeartPulse,
+  Receipt,
+  Fuel,
+  ShoppingCart,
+  CalendarClock,
+  Sun,
+  ClipboardX,
+  Battery,
+  Disc,
+  Trash,
+  Keyboard,
+  BookMinus,
+  Quote,
+  Users,
+   Languages,
+  BookOpenCheck,
+  Dice5,
+  Copy,
+  BrainCircuit,
+  Trophy,
 } from 'lucide-react';
 
 export type Tool = {
@@ -72,13 +99,13 @@ export type Tool = {
   slug: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
-  category: 'security' | 'developer' | 'general' | 'advanced' | 'data' | 'creative' | 'networking' | 'everyday';
+  category: 'security' | 'developer' | 'general' | 'advanced' | 'data' | 'creative' | 'networking' | 'everyday' | 'file-document' | 'system-helpers' | 'smart-helpers' | 'fun-novelty';
   implemented: boolean;
 };
 
 export type ToolCategory = {
   name: string;
-  id: 'security' | 'developer' | 'general' | 'advanced' | 'data' | 'creative' | 'networking' | 'everyday';
+  id: 'security' | 'developer' | 'general' | 'advanced' | 'data' | 'creative' | 'networking' | 'everyday' | 'file-document' | 'system-helpers' | 'smart-helpers' | 'fun-novelty';
   tools: Tool[];
 };
 
@@ -109,10 +136,7 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'WHOIS Lookup', slug: 'whois-lookup', description: 'Perform WHOIS lookups.', icon: BookUser, category: 'networking', implemented: true },
       { name: 'Port Scanner', slug: 'port-scanner', description: 'Scan for open ports (simulated).', icon: ScanLine, category: 'networking', implemented: true },
       { name: 'SSL/TLS Checker', slug: 'ssl-tls-checker', description: 'Check SSL/TLS certificate details (simulated).', icon: ShieldCheck, category: 'networking', implemented: true },
-      { name: 'Traceroute Visualizer', slug: 'traceroute-visualizer', description: 'Visualize internet path hops (simulated).', icon: Route, category: 'networking', implemented: true },
       { name: 'Ping & Latency Tester', slug: 'ping-tester', description: 'Check connectivity and response time.', icon: Gauge, category: 'networking', implemented: true },
-      { name: 'WebSocket Tester', slug: 'websocket-tester', description: 'Test real-time socket connections.', icon: Webhook, category: 'networking', implemented: true },
-      { name: 'CORS Tester', slug: 'cors-tester', description: 'Simulate cross-origin requests.', icon: Orbit, category: 'networking', implemented: true },
       { name: 'REST API Tester', slug: 'api-tester', description: 'Send HTTP requests to APIs.', icon: Cloud, category: 'networking', implemented: true },
       { name: 'URL Encoder/Decoder', slug: 'url-encoder-decoder', description: 'Encode/decode URL components.', icon: Link, category: 'networking', implemented: true },
       { name: 'User-Agent Parser', slug: 'user-agent-parser', description: 'Parse User-Agent strings.', icon: Fingerprint, category: 'networking', implemented: true },
@@ -125,12 +149,7 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'JSON Formatter', slug: 'json-formatter', description: 'Beautify or minify JSON data.', icon: FileJson, category: 'developer', implemented: true },
       { name: 'Base64 Encoder/Decoder', slug: 'base64-encoder-decoder', description: 'Encode/decode Base64 strings.', icon: Binary, category: 'developer', implemented: true },
       { name: 'Regex Tester', slug: 'regex-tester', description: 'Test regular expressions.', icon: Regex, category: 'developer', implemented: true },
-      { name: 'Regex Generator (AI)', slug: 'regex-generator', description: 'Generate regex from natural language.', icon: Bot, category: 'developer', implemented: true },
       { name: 'AI Code Explainer', slug: 'ai-code-explainer', description: 'Explain code and find vulnerabilities.', icon: Bot, category: 'developer', implemented: true },
-      { name: 'AI Code Refactorer', slug: 'code-refactorer', description: 'Optimize code with AI.', icon: Bot, category: 'developer', implemented: true },
-      { name: 'Code Diff Checker', slug: 'diff-checker', description: 'Compare two code snippets.', icon: GitCompareArrows, category: 'developer', implemented: true },
-      { name: 'Markdown Previewer', slug: 'markdown-previewer', description: 'Live render Markdown.', icon: FileText, category: 'developer', implemented: true },
-      { name: 'Cron Expression Builder', slug: 'cron-builder', description: 'Build & test cron jobs visually.', icon: Clock, category: 'developer', implemented: true },
       { name: 'JWT Decoder', slug: 'jwt-decoder', description: 'Decode JSON Web Tokens.', icon: Clapperboard, category: 'developer', implemented: true },
       { name: 'Code Snippet Manager', slug: 'snippet-manager', description: 'Save and manage code snippets.', icon: ListOrdered, category: 'developer', implemented: true },
       { name: 'Git Cheat Sheet', slug: 'git-cheat-sheet', description: 'Quick reference for Git commands.', icon: GitFork, category: 'developer', implemented: true },
@@ -144,27 +163,23 @@ export const toolsConfig: ToolCategory[] = [
     id: 'data',
     tools: [
       { name: 'Data Format Converter', slug: 'data-converter', description: 'Convert between CSV, JSON, etc.', icon: Shuffle, category: 'data', implemented: true },
-      { name: 'CSV/Excel Analyzer', slug: 'csv-analyzer', description: 'Get quick insights from CSV files.', icon: SheetIcon, category: 'data', implemented: true },
-      { name: 'Log Analyzer', slug: 'log-analyzer', description: 'Parse logs for errors with AI.', icon: ScanSearch, category: 'data', implemented: true },
-      { name: 'Text Similarity Checker', slug: 'text-similarity', description: 'Compare two documents for plagiarism.', icon: GitCompareArrows, category: 'data', implemented: true },
-      { name: 'Sentiment Analyzer', slug: 'sentiment-analyzer', description: 'Analyze the tone of text.', icon: Smile, category: 'data', implemented: true },
       { name: 'Word/Character Counter', slug: 'word-counter', description: 'Count words and characters in text.', icon: ScanText, category: 'data', implemented: true },
     ],
   },
-  {
-    name: 'Creative & Fun',
-    id: 'creative',
+   {
+    name: 'File & Document Tools',
+    id: 'file-document',
     tools: [
-       { name: 'Meme Generator', slug: 'meme-generator', description: 'Quickly caption images.', icon: Image, category: 'creative', implemented: true },
-       { name: 'ASCII Art Generator (AI)', slug: 'ascii-art-generator', description: 'Convert images or text to ASCII art.', icon: Bot, category: 'creative', implemented: true },
-       { name: 'Pixelate/Blur Tool', slug: 'pixelate-tool', description: 'Censor parts of images.', icon: Paintbrush, category: 'creative', implemented: true },
-       { name: 'Palette Extractor', slug: 'palette-extractor', description: 'Extract colors from an image.', icon: Palette, category: 'creative', implemented: true },
-       { name: 'Name/Username Generator (AI)', slug: 'name-generator', description: 'Generate creative usernames or brand names.', icon: UserPlus, category: 'creative', implemented: true },
-       { name: 'Lorem Ipsum Generator', slug: 'lorem-ipsum-generator', description: 'Generate placeholder text.', icon: MessageSquare, category: 'creative', implemented: true },
-    ],
+        { name: 'File Converter Hub', slug: 'file-converter', description: 'Convert between file formats.', icon: FileDigit, category: 'file-document', implemented: true },
+        { name: 'Image Resizer', slug: 'image-resizer', description: 'Resize and compress images.', icon: FileImage, category: 'file-document', implemented: true },
+        { name: 'Text-to-Speech (TTS)', slug: 'text-to-speech', description: 'Listen to text in a natural voice.', icon: AudioLines, category: 'file-document', implemented: true },
+        { name: 'Speech-to-Text (STT)', slug: 'speech-to-text', description: 'Dictate notes or transcribe audio.', icon: Mic, category: 'file-document', implemented: true },
+        { name: 'Barcode Generator/Scanner', slug: 'barcode-tools', description: 'Create and read barcodes.', icon: Barcode, category: 'file-document', implemented: true },
+        { name: 'File Splitter & Joiner', slug: 'file-splitter', description: 'Split and merge large files.', icon: Combine, category: 'file-document', implemented: true },
+    ]
   },
   {
-    name: 'Everyday Utilities',
+    name: 'Everyday Life Utilities',
     id: 'everyday',
     tools: [
       { name: 'Scientific Calculator', slug: 'scientific-calculator', description: 'Advanced scientific calculator.', icon: FlaskConical, category: 'everyday', implemented: true },
@@ -176,9 +191,27 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'Stopwatch & Timer', slug: 'stopwatch', description: 'Online stopwatch and countdown timer.', icon: Timer, category: 'everyday', implemented: true },
       { name: 'Timezone Converter', slug: 'timezone-converter', description: 'Handy for global coordination.', icon: Globe, category: 'everyday', implemented: true },
       { name: 'Text Cleaner', slug: 'text-cleaner', description: 'Remove extra spaces and newlines.', icon: BookText, category: 'everyday', implemented: true },
-      { name: 'Document Scanner (OCR)', slug: 'doc-scanner', description: 'Extract text from images/screenshots.', icon: Scan, category: 'everyday', implemented: true },
-      { name: 'PDF Tools', slug: 'pdf-tools', description: 'Merge, split, or compress PDFs.', icon: File, category: 'everyday', implemented: true },
-      { name: 'Clipboard Manager', slug: 'clipboard-manager', description: 'History of copied text.', icon: ClipboardList, category: 'everyday', implemented: true },
+      { name: 'BMI & Health Calculator', slug: 'bmi-calculator', description: 'Calculate BMI and other health metrics.', icon: HeartPulse, category: 'everyday', implemented: true },
+      { name: 'Tip & Split Bill Calculator', slug: 'tip-calculator', description: 'For dining and sharing costs.', icon: Receipt, category: 'everyday', implemented: true },
+      { name: 'Shopping List', slug: 'shopping-list', description: 'A minimal but handy list tracker.', icon: ShoppingCart, category: 'everyday', implemented: true },
+    ],
+  },
+   {
+    name: 'Smart Online Helpers',
+    id: 'smart-helpers',
+    tools: [
+        { name: 'Summarizer Tool', slug: 'summarizer', description: 'Summarize text or a URL.', icon: BookMinus, category: 'smart-helpers', implemented: true },
+        { name: 'Fake Data Generator', slug: 'fake-data-generator', description: 'Generate fake names, emails, etc.', icon: Users, category: 'smart-helpers', implemented: true },
+        { name: 'Language Detector', slug: 'language-detector', description: 'Auto-detect the language of text.', icon: Languages, category: 'smart-helpers', implemented: true },
+    ]
+  },
+  {
+    name: 'Creative & Fun',
+    id: 'creative',
+    tools: [
+       { name: 'Lorem Ipsum Generator', slug: 'lorem-ipsum-generator', description: 'Generate placeholder text.', icon: MessageSquare, category: 'creative', implemented: true },
+       { name: 'Dice Roller & Coin Flip', slug: 'dice-roller', description: 'RNG for quick decisions.', icon: Dice5, category: 'creative', implemented: true },
+       { name: 'Custom Flashcard Maker', slug: 'flashcard-maker', description: 'A helpful tool for studying.', icon: Copy, category: 'creative', implemented: true },
     ],
   },
   {
@@ -191,4 +224,26 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'Port Binding Visualizer', slug: 'port-visualizer', description: 'Visualize local port usage.', icon: Briefcase, category: 'advanced', implemented: true },
     ],
   },
+   {
+    name: 'Placeholders',
+    id: 'system-helpers',
+    tools: [
+        { name: 'File Converter Hub', slug: 'file-converter-placeholder', description: 'Placeholder', icon: FileDigit, category: 'system-helpers', implemented: true },
+        { name: 'Barcode Tools', slug: 'barcode-placeholder', description: 'Placeholder', icon: Barcode, category: 'system-helpers', implemented: true },
+        { name: 'File Splitter', slug: 'filesplitter-placeholder', description: 'Placeholder', icon: Combine, category: 'system-helpers', implemented: true },
+        { name: 'Fuel/Mileage Tracker', slug: 'fuel-tracker-placeholder', description: 'Placeholder', icon: Fuel, category: 'system-helpers', implemented: true },
+        { name: 'Birthday & Reminder Tool', slug: 'reminders-placeholder', description: 'Placeholder', icon: CalendarClock, category: 'system-helpers', implemented: true },
+        { name: 'Weather Widget', slug: 'weather-placeholder', description: 'Placeholder', icon: Sun, category: 'system-helpers', implemented: true },
+        { name: 'Clipboard Cleaner', slug: 'clipboard-cleaner-placeholder', description: 'Placeholder', icon: ClipboardX, category: 'system-helpers', implemented: true },
+        { name: 'Battery Health Checker', slug: 'battery-health-placeholder', description: 'Placeholder', icon: Battery, category: 'system-helpers', implemented: true },
+        { name: 'Storage Analyzer', slug: 'storage-analyzer-placeholder', description: 'Placeholder', icon: Disc, category: 'system-helpers', implemented: true },
+        { name: 'File Shredder', slug: 'file-shredder-placeholder', description: 'Placeholder', icon: Trash, category: 'system-helpers', implemented: true },
+        { name: 'Hotkey Launcher', slug: 'hotkey-launcher-placeholder', description: 'Placeholder', icon: Keyboard, category: 'system-helpers', implemented: true },
+        { name: 'Link Preview Generator', slug: 'link-preview-placeholder', description: 'Placeholder', icon: Quote, category: 'system-helpers', implemented: true },
+        { name: 'Emoji & Symbol Picker', slug: 'emoji-picker-placeholder', description: 'Placeholder', icon: Smile, category: 'system-helpers', implemented: true },
+        { name: 'Horoscope & Zodiac Info', slug: 'horoscope-placeholder', description: 'Placeholder', icon: Trophy, category: 'system-helpers', implemented: true },
+        { name: 'Name Numerology Finder', slug: 'numerology-placeholder', description: 'Placeholder', icon: BookOpenCheck, category: 'system-helpers', implemented: true },
+        { name: 'Puzzle Generator', slug: 'puzzle-generator-placeholder', description: 'Placeholder', icon: BrainCircuit, category: 'system-helpers', implemented: true },
+    ]
+  }
 ];

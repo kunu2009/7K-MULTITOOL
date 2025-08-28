@@ -16,3 +16,7 @@ import '@/ai/flows/ssl-tls-checker.ts';
 import '@/ai/flows/packet-sniffer-simulator.ts';
 import '@/ai/flows/number-to-words.ts';
 import '@/ai/flows/password-breach-checker.ts';
+import '@/ai/flows/text-to-speech.ts';
+import '@/ai/flows/summarizer.ts';
+import '@/ai/flows/fake-data-generator.ts';
+import '@/ai/flows/language-detector.ts';
