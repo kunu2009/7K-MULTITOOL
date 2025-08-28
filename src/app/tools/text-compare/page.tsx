@@ -7,8 +7,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { diffChars } from 'diff';
 
 export default function TextComparePage() {
-  const [textA, setTextA] = React.useState('');
-  const [textB, setTextB] = React.useState('');
+  const [textA, setTextA] = React.useState('Hello world!');
+  const [textB, setTextB] = React.useState('Hello there, world!');
 
   const differences = diffChars(textA, textB);
 
@@ -16,7 +16,7 @@ export default function TextComparePage() {
     <Card>
       <CardHeader>
         <CardTitle>Text Compare / Diff Tool</CardTitle>
-        <CardDescription>Compare two pieces of text to see the differences.</CardDescription>
+        <CardDescription>Compare two pieces of text to see the differences character by character.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid md:grid-cols-2 gap-4">
@@ -37,7 +37,7 @@ export default function TextComparePage() {
           <h3 className="text-lg font-semibold mb-2">Differences</h3>
           <div className="p-4 border rounded-md min-h-[100px] bg-muted whitespace-pre-wrap font-mono">
             {differences.map((part, index) => {
-              const color = part.added ? 'bg-green-500/20' : part.removed ? 'bg-red-500/20' : 'transparent';
+              const color = part.added ? 'bg-green-500/30' : part.removed ? 'bg-red-500/30 line-through' : 'transparent';
               return (
                 <span key={index} className={color}>
                   {part.value}
