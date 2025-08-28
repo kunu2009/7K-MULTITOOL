@@ -46,6 +46,7 @@ import {
   Key,
   Database,
   Bot,
+  FileX,
 } from 'lucide-react';
 
 export type Tool = {
@@ -129,6 +130,7 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'Caesar Cipher', slug: 'caesar-cipher', description: 'Simple substitution cipher.', icon: Key, category: 'advanced', implemented: true },
       { name: 'Port Binding Visualizer', slug: 'port-visualizer', description: 'Visualize local port usage.', icon: Briefcase, category: 'advanced', implemented: true },
       { name: 'File Integrity Checker', slug: 'file-integrity-checker', description: 'Generate and verify file checksums.', icon: Database, category: 'advanced', implemented: true },
+      { name: 'Metadata Remover', slug: 'metadata-remover', description: 'Strip EXIF data from images.', icon: FileX, category: 'advanced', implemented: true },
     ],
   },
 ];
