@@ -157,7 +157,11 @@ import {
   Layers,
   Terminal,
   FileCheck2,
-  Waves
+  Waves,
+  ALargeSmall,
+  PackageSearch,
+  MapPin,
+  ListRestart
 } from 'lucide-react';
 
 export type Tool = {
@@ -236,6 +240,17 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'Shell Command Runner', slug: 'shell-runner', description: 'Test small shell commands.', icon: Terminal, category: 'developer', implemented: true },
     ]
   },
+   {
+    name: 'Advanced File Tools',
+    id: 'advanced-file',
+    tools: [
+        { name: 'Batch File Renamer', slug: 'batch-file-renamer', description: 'Simulate renaming files with rules.', icon: ALargeSmall, category: 'advanced-file', implemented: true },
+        { name: 'File Type Identifier', slug: 'file-type-identifier', description: 'Detect file type from magic bytes.', icon: PackageSearch, category: 'advanced-file', implemented: true },
+        { name: 'PDF Image Extractor', slug: 'pdf-image-extractor', description: 'Pull all images from a PDF.', icon: FileImage, category: 'advanced-file', implemented: false },
+        { name: 'EXIF GPS Mapper', slug: 'exif-gps-mapper', description: 'Plot photo locations on a map.', icon: MapPin, category: 'advanced-file', implemented: false },
+        { name: 'Archive Password Brute Helper', slug: 'archive-password-brute-helper', description: 'Educational password recovery simulation.', icon: ListRestart, category: 'advanced-file', implemented: true },
+    ]
+  },
   {
     name: 'File & Data Handling',
     id: 'file-data',
@@ -299,6 +314,7 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'Discount & GST Calculator', slug: 'discount-calculator', description: 'Shopping quick math.', icon: Percent, category: 'calculators', implemented: true },
       { name: 'Cooking Converter', slug: 'cooking-converter', description: 'Cups ↔ grams ↔ ml.', icon: CookingPot, category: 'calculators', implemented: true },
       { name: 'Percentage Calculator', slug: 'percentage-calculator', description: 'Find % increase/decrease.', icon: TrendingUp, category: 'calculators', implemented: true },
+      { name: 'Compound Interest Calculator', slug: 'compound-interest-calculator', description: 'Savings planning.', icon: Wallet, category: 'calculators', implemented: true },
     ]
   },
    {
@@ -380,6 +396,8 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'Spaced Repetition Scheduler', slug: 'spaced-repetition', description: 'Memory optimization.', icon: History, category: 'learning', implemented: true },
       { name: 'Language Word of the Day', slug: 'word-of-day', description: 'Vocab expansion.', icon: TestTube, category: 'learning', implemented: true },
       { name: 'Offline Encyclopedia', slug: 'encyclopedia', description: 'Quick knowledge lookups.', icon: Library, category: 'learning', implemented: true },
+      { name: 'Unit Circle & Trig Helper', slug: 'trig-helper', description: 'Quick reference for students.', icon: Sigma, category: 'learning', implemented: true },
+      { name: 'Physics Formula Sheet', slug: 'physics-formulas', description: 'Searchable formula library.', icon: Atom, category: 'learning', implemented: true },
     ]
   },
   {
