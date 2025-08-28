@@ -29,9 +29,6 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         ></link>
-        {toolsConfig.flatMap(category => category.tools).map(tool => (
-          tool.implemented && <link key={tool.slug} rel="prefetch" href={`/tools/${tool.slug}`} />
-        ))}
       </head>
       <body className="font-body antialiased">
         <ThemeProvider
