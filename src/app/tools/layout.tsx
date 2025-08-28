@@ -36,17 +36,24 @@ export default function ToolsLayout({
     <SidebarProvider defaultOpen={false}>
       <SidebarInset>
         <header className="flex items-center justify-between border-b p-2">
-            <SidebarTrigger />
+            <div className="md:hidden">
+              <SidebarTrigger />
+            </div>
+            <div className="hidden md:block">
+              {/* This space can be used for a breadcrumb or title in the future */}
+            </div>
             <ThemeToggle />
         </header>
         <main className="flex-1 p-4 md:p-6">{children}</main>
       </SidebarInset>
       <Sidebar side="right" collapsible="icon">
-        <SidebarHeader>
+        <SidebarHeader className="justify-end">
           <div className="flex items-center gap-2">
             <Logo className="size-7 text-primary" />
             <h1 className="text-lg font-semibold">7K MultiTool</h1>
           </div>
+           <div className="flex-1" />
+           <SidebarTrigger className="hidden md:flex" />
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>
