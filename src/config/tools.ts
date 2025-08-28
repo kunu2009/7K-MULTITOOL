@@ -159,7 +159,7 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'Random Password Generator', slug: 'random-password-generator', description: 'Create strong, random passwords.', icon: Key, category: 'security', implemented: true },
       { name: '2FA Code Generator', slug: '2fa-generator', description: 'Generate TOTP/HOTP codes.', icon: Key, category: 'security', implemented: true },
       { name: 'Hash Generator', slug: 'hash-generator', description: 'Generate MD5, SHA1, SHA256 hashes.', icon: Hash, category: 'security', implemented: true },
-      { name: 'File/Folder Encryption', slug: 'file-encryption', description: 'Encrypt files with a password.', icon: FileLock, category: 'security', implemented: true },
+      { name: 'File/Folder Encryption Tool', slug: 'file-encryption', description: 'Encrypt files with a password.', icon: FileLock, category: 'security', implemented: true },
       { name: 'Metadata Remover', slug: 'metadata-remover', description: 'Strip EXIF data from images.', icon: FileX, category: 'security', implemented: true },
       { name: 'Secure Notes', slug: 'secure-notes', description: 'Client-side encrypted notes.', icon: LockKeyhole, category: 'security', implemented: true },
       { name: 'Phishing Simulator', slug: 'phishing-simulator', description: 'Educational phishing simulation.', icon: MailWarning, category: 'security', implemented: true },
@@ -213,10 +213,10 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'Word/Character Counter', slug: 'word-counter', description: 'Count words and characters in text.', icon: ScanText, category: 'text-writing', implemented: true },
       { name: 'Text Cleaner', slug: 'text-cleaner', description: 'Remove extra spaces and newlines.', icon: Eraser, category: 'text-writing', implemented: true },
       { name: 'Case Converter', slug: 'case-converter', description: 'Change text casing (upper, lower, etc.).', icon: CaseSensitive, category: 'text-writing', implemented: true },
-      { name: 'Typos/Grammar Fixer (AI)', slug: 'grammar-fixer', description: 'Auto-correct spelling and grammar.', icon: SpellCheck, category: 'text-writing', implemented: false },
-      { name: 'Synonym Finder', slug: 'synonym-finder', description: 'Find better word choices.', icon: Book, category: 'text-writing', implemented: false },
-      { name: 'Text Expander / Snippets', slug: 'text-expander', description: 'Save and reuse quick phrases.', icon: Notebook, category: 'text-writing', implemented: false },
-      { name: 'PDF → Speech Reader', slug: 'pdf-speech-reader', description: 'Load a PDF and have it read aloud.', icon: Speech, category: 'text-writing', implemented: false },
+      { name: 'Typos/Grammar Fixer (AI)', slug: 'grammar-fixer', description: 'Auto-correct spelling and grammar.', icon: SpellCheck, category: 'text-writing', implemented: true },
+      { name: 'Synonym Finder', slug: 'synonym-finder', description: 'Find better word choices.', icon: Book, category: 'text-writing', implemented: true },
+      { name: 'Text Expander / Snippets', slug: 'text-expander', description: 'Save and reuse quick phrases.', icon: Notebook, category: 'text-writing', implemented: true },
+      { name: 'PDF → Speech Reader', slug: 'pdf-speech-reader', description: 'Load a PDF and have it read aloud.', icon: Speech, category: 'text-writing', implemented: true },
     ]
   },
    {
@@ -231,9 +231,9 @@ export const toolsConfig: ToolCategory[] = [
       { name: 'Currency Converter', slug: 'currency-converter', description: 'Convert between currencies.', icon: CircleDollarSign, category: 'calculators', implemented: true },
       { name: 'Tip & Split Bill Calculator', slug: 'tip-calculator', description: 'For dining and sharing costs.', icon: Receipt, category: 'calculators', implemented: true },
       { name: 'BMI & Health Calculator', slug: 'bmi-calculator', description: 'Calculate BMI and other health metrics.', icon: HeartPulse, category: 'calculators', implemented: true },
-      { name: 'Loan / EMI Calculator', slug: 'loan-calculator', description: 'Finance helper for loans.', icon: Landmark, category: 'calculators', implemented: false },
-      { name: 'Discount & GST Calculator', slug: 'discount-calculator', description: 'Shopping quick math.', icon: Percent, category: 'calculators', implemented: false },
-      { name: 'Cooking Converter', slug: 'cooking-converter', description: 'Cups ↔ grams ↔ ml.', icon: CookingPot, category: 'calculators', implemented: false },
+      { name: 'Loan / EMI Calculator', slug: 'loan-calculator', description: 'Finance helper for loans.', icon: Landmark, category: 'calculators', implemented: true },
+      { name: 'Discount & GST Calculator', slug: 'discount-calculator', description: 'Shopping quick math.', icon: Percent, category: 'calculators', implemented: true },
+      { name: 'Cooking Converter', slug: 'cooking-converter', description: 'Cups ↔ grams ↔ ml.', icon: CookingPot, category: 'calculators', implemented: true },
     ]
    },
    {
@@ -242,23 +242,23 @@ export const toolsConfig: ToolCategory[] = [
     tools: [
         { name: 'Image Resizer', slug: 'image-resizer', description: 'Resize and compress images.', icon: FileImage, category: 'file-document', implemented: true },
         { name: 'Text-to-Speech (TTS)', slug: 'text-to-speech', description: 'Listen to text in a natural voice.', icon: AudioLines, category: 'file-document', implemented: true },
-        { name: 'Speech-to-Text (STT)', slug: 'speech-to-text', description: 'Dictate notes or transcribe audio.', icon: Mic, category: 'file-document', implemented: true },
-        { name: 'File Converter Hub', slug: 'file-converter-hub', description: 'Convert between file formats.', icon: FileDigit, category: 'file-document', implemented: false },
+        { name: 'Speech-to-Text (STT)', slug: 'speech-to-text', description: 'Dictate notes or transcribe recordings.', icon: Mic, category: 'file-document', implemented: true },
+        { name: 'File Converter Hub', slug: 'file-converter', description: 'Convert between file formats.', icon: FileDigit, category: 'file-document', implemented: true },
         { name: 'Barcode Generator/Scanner', slug: 'barcode-generator', description: 'Create and read barcodes.', icon: Barcode, category: 'file-document', implemented: true },
         { name: 'File Splitter & Joiner', slug: 'file-splitter', description: 'Split and merge large files.', icon: Combine, category: 'file-document', implemented: true },
         { name: 'PDF Tools', slug: 'pdf-tools', description: 'Merge, split, compress, or protect PDFs.', icon: FileText, category: 'file-document', implemented: true },
         { name: 'Document Scanner (OCR)', slug: 'doc-scanner', description: 'Extract text from images/screenshots.', icon: FileScan, category: 'file-document', implemented: true },
-        { name: 'Image Format Converter', slug: 'image-format-converter', description: 'PNG ↔ JPG ↔ WebP.', icon: GalleryVertical, category: 'file-document', implemented: false },
+        { name: 'Image Format Converter', slug: 'image-format-converter', description: 'PNG ↔ JPG ↔ WebP.', icon: GalleryVertical, category: 'file-document', implemented: true },
     ]
   },
    {
     name: 'Search & Reference',
     id: 'search-reference',
     tools: [
-      { name: 'Offline Encyclopedia', slug: 'encyclopedia', description: 'Short knowledge lookups.', icon: Library, category: 'search-reference', implemented: false },
+      { name: 'Offline Encyclopedia', slug: 'encyclopedia', description: 'Short knowledge lookups.', icon: Library, category: 'search-reference', implemented: true },
       { name: 'Cheat Sheets Hub', slug: 'cheat-sheets', description: 'SQL, Linux, Python, etc.', icon: BookCopy, category: 'search-reference', implemented: true },
       { name: 'Keyboard Shortcuts', slug: 'keyboard-shortcuts', description: 'Win, Mac, VS Code, etc.', icon: Keyboard, category: 'search-reference', implemented: true },
-      { name: 'Currency + Crypto Tracker', slug: 'price-tracker', description: 'Live rates and trends.', icon: Bitcoin, category: 'search-reference', implemented: false },
+      { name: 'Currency + Crypto Tracker', slug: 'price-tracker', description: 'Live rates and trends.', icon: Bitcoin, category: 'search-reference', implemented: true },
     ]
   },
   {
@@ -267,25 +267,25 @@ export const toolsConfig: ToolCategory[] = [
     tools: [
        { name: 'Lorem Ipsum Generator', slug: 'lorem-ipsum-generator', description: 'Generate placeholder text.', icon: MessageSquare, category: 'creative', implemented: true },
        { name: 'Meme Generator', slug: 'meme-generator', description: 'Create memes with custom text.', icon: Newspaper, category: 'creative', implemented: true },
-       { name: 'ASCII Art Generator', slug: 'ascii-art-generator', description: 'Convert images or text to ASCII art.', icon: Type, category: 'creative', implemented: true },
+       { name: 'ASCII Art Generator', slug: 'ascii-art-generator', description: 'Convert images/text to ASCII art.', icon: Type, category: 'creative', implemented: true },
        { name: 'Pixelate/Blur Tool', slug: 'image-censor-tool', description: 'Censor parts of images.', icon: Scissors, category: 'creative', implemented: true },
        { name: 'Palette Extractor', slug: 'palette-extractor', description: 'Extract color palettes from images.', icon: PaletteIcon, category: 'creative', implemented: true },
        { name: 'Name/Username Generator', slug: 'name-generator', description: 'Generate creative usernames.', icon: Sparkles, category: 'creative', implemented: true },
-       { name: 'Favicon & Icon Generator', slug: 'favicon-generator', description: 'Make app icons from text/images.', icon: Aperture, category: 'creative', implemented: false },
-       { name: 'GIF Maker', slug: 'gif-maker', description: 'From images or video clips.', icon: Clapperboard, category: 'creative', implemented: false },
-       { name: 'Audio Converter', slug: 'audio-converter', description: 'MP3 ↔ WAV ↔ AAC.', icon: Music, category: 'creative', implemented: false },
-       { name: 'Video Cutter/Trimmer', slug: 'video-trimmer', description: 'Quick clip from a video.', icon: ScissorsSquare, category: 'creative', implemented: false },
+       { name: 'Favicon & Icon Generator', slug: 'favicon-generator', description: 'Make app icons from text/images.', icon: Aperture, category: 'creative', implemented: true },
+       { name: 'GIF Maker', slug: 'gif-maker', description: 'From images or video clips.', icon: Clapperboard, category: 'creative', implemented: true },
+       { name: 'Audio Converter', slug: 'audio-converter', description: 'MP3 ↔ WAV ↔ AAC.', icon: Music, category: 'creative', implemented: true },
+       { name: 'Video Cutter/Trimmer', slug: 'video-trimmer', description: 'Quick clip from a video.', icon: ScissorsSquare, category: 'creative', implemented: true },
     ],
   },
     {
     name: 'Device Utilities',
     id: 'device',
     tools: [
-      { name: 'Screen Ruler & Color Sampler', slug: 'screen-ruler', description: 'Measure pixels, grab colors.', icon: MousePointer, category: 'device', implemented: false },
-      { name: 'Clipboard History', slug: 'clipboard-history', description: 'More powerful than native history.', icon: ClipboardList, category: 'device', implemented: false },
-      { name: 'QR/Barcode History', slug: 'scan-history', description: 'Log of scanned codes.', icon: Scan, category: 'device', implemented: false },
-      { name: 'Contact vCard Generator', slug: 'vcard-generator', description: 'Make/share digital business cards.', icon: Contact, category: 'device', implemented: false },
-      { name: 'File Transfer over Wi-Fi', slug: 'wifi-transfer', description: 'Phone ↔ laptop locally.', icon: Wifi, category: 'device', implemented: false },
+      { name: 'Screen Ruler & Color Sampler', slug: 'screen-ruler', description: 'Measure pixels, grab colors.', icon: MousePointer, category: 'device', implemented: true },
+      { name: 'Clipboard History', slug: 'clipboard-history', description: 'More powerful than native history.', icon: ClipboardList, category: 'device', implemented: true },
+      { name: 'QR/Barcode History', slug: 'scan-history', description: 'Log of scanned codes.', icon: Scan, category: 'device', implemented: true },
+      { name: 'Contact vCard Generator', slug: 'vcard-generator', description: 'Make/share digital business cards.', icon: Contact, category: 'device', implemented: true },
+      { name: 'File Transfer over Wi-Fi', slug: 'wifi-transfer', description: 'Phone ↔ laptop locally.', icon: Wifi, category: 'device', implemented: true },
     ]
   },
   {
@@ -293,9 +293,9 @@ export const toolsConfig: ToolCategory[] = [
     id: 'productivity',
     tools: [
       { name: 'Pomodoro Timer', slug: 'pomodoro-timer', description: 'Focus and rest cycles.', icon: AlarmClock, category: 'productivity', implemented: true },
-      { name: 'Daily Journal / Diary', slug: 'journal', description: 'Quick notes saved offline.', icon: BookText, category: 'productivity', implemented: false },
-      { name: 'Habit Tracker', slug: 'habit-tracker', description: 'Streaks and reminders.', icon: Goal, category: 'productivity', implemented: false },
-      { name: 'Mind Map Creator', slug: 'mind-map', description: 'Simple node/branch diagrams.', icon: Map, category: 'productivity', implemented: false },
+      { name: 'Daily Journal / Diary', slug: 'journal', description: 'Quick notes saved offline.', icon: BookText, category: 'productivity', implemented: true },
+      { name: 'Habit Tracker', slug: 'habit-tracker', description: 'Streaks and reminders.', icon: Goal, category: 'productivity', implemented: true },
+      { name: 'Mind Map Creator', slug: 'mind-map', description: 'Simple node/branch diagrams.', icon: Map, category: 'productivity', implemented: true },
       { name: 'Random Idea Generator', slug: 'idea-generator', description: 'For brainstorming.', icon: Lightbulb, category: 'productivity', implemented: true },
     ]
   },
@@ -310,8 +310,8 @@ export const toolsConfig: ToolCategory[] = [
         { name: 'Puzzle Generator', slug: 'puzzle-generator', description: 'Sudoku, crosswords, riddles.', icon: Puzzle, category: 'fun-novelty', implemented: true },
         { name: 'Random Name Picker', slug: 'random-name-picker', description: 'For raffles or lucky draws.', icon: Users, category: 'fun-novelty', implemented: true },
         { name: 'Random Fact / Quote', slug: 'random-fact-quote', description: 'Daily fun and inspiration.', icon: Quote, category: 'fun-novelty', implemented: true },
-        { name: 'Soundboard Tool', slug: 'soundboard', description: 'Play quick sound effects.', icon: SoundboardIcon, category: 'fun-novelty', implemented: false },
-        { name: 'Mini Games', slug: 'mini-games', description: 'Tic-Tac-Toe, 2048, Snake.', icon: Gamepad2, category: 'fun-novelty', implemented: false },
+        { name: 'Soundboard Tool', slug: 'soundboard', description: 'Play quick sound effects.', icon: SoundboardIcon, category: 'fun-novelty', implemented: true },
+        { name: 'Mini Games', slug: 'mini-games', description: 'Tic-Tac-Toe, 2048, Snake.', icon: Gamepad2, category: 'fun-novelty', implemented: true },
     ]
   },
 ];
