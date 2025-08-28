@@ -35,7 +35,7 @@ export default function ToolsLayout({
   return (
     <SidebarProvider defaultOpen={false}>
       <SidebarInset>
-        <header className="flex items-center justify-between border-b p-2">
+        <header className="flex items-center justify-between border-b p-2 pr-[calc(var(--sidebar-width-icon)_+_0.5rem)] md:pr-2">
             <div className="md:hidden">
               <SidebarTrigger />
             </div>

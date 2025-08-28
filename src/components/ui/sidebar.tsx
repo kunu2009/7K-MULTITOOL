@@ -92,9 +92,12 @@ const SidebarProvider = React.forwardRef<
 
     // Helper to toggle the sidebar.
     const toggleSidebar = React.useCallback(() => {
-      return isMobile
-        ? setOpenMobile((open) => !open)
-        : setOpen((open) => !open)
+      // On mobile, we use a sheet, so we toggle that.
+      if (isMobile) {
+        return setOpenMobile((open) => !open)
+      }
+
+      setOpen((open) => !open)
     }, [isMobile, setOpen, setOpenMobile])
 
     // Adds a keyboard shortcut to toggle the sidebar.
@@ -177,19 +180,49 @@ const Sidebar = React.forwardRef<
     ref
   ) => {
     const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
-
-    if (collapsible === "none") {
-      return (
-        <div
-          className={cn(
-            "flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground",
-            className
-          )}
-          ref={ref}
-          {...props}
-        >
-          {children}
-        </div>
+    
+    // When on mobile and the sidebar should be collapsible to an icon bar,
+    // we render the Sheet for the expanded state, but keep the icon bar visible.
+    if (isMobile && collapsible === 'icon') {
+       return (
+        <>
+          <Sheet open={openMobile} onOpenChange={setOpenMobile}>
+            <SheetContent
+              data-sidebar="sidebar"
+              data-mobile="true"
+              className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+              style={
+                {
+                  "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
+                } as React.CSSProperties
+              }
+              side={side}
+            >
+              <div className="flex h-full w-full flex-col">{children}</div>
+            </SheetContent>
+          </Sheet>
+          <div
+            ref={ref}
+            className="group peer text-sidebar-foreground md:hidden"
+            data-state="collapsed"
+            data-collapsible="icon"
+            data-variant={variant}
+            data-side={side}
+          >
+            <div className="w-[--sidebar-width-icon]" />
+            <div
+              className={cn("fixed inset-y-0 z-10 flex h-svh w-[--sidebar-width-icon]", side === 'left' ? 'left-0' : 'right-0', className)}
+              {...props}
+            >
+              <div
+                data-sidebar="sidebar"
+                className="flex h-full w-full flex-col bg-sidebar"
+              >
+                {children}
+              </div>
+            </div>
+          </div>
+        </>
       )
     }
 
@@ -225,7 +258,8 @@ const Sidebar = React.forwardRef<
         {/* This is what handles the sidebar gap on desktop */}
         <div
           className={cn(
-            "duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear",
+            "duration-200 relative h-svh bg-transparent transition-[width] ease-linear",
+             variant === "sidebar" ? "w-[--sidebar-width]" : "w-0",
             "group-data-[collapsible=offcanvas]:w-0",
             "group-data-[side=right]:rotate-180",
             variant === "floating" || variant === "inset"
@@ -319,12 +353,14 @@ const SidebarInset = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"main">
 >(({ className, ...props }, ref) => {
+  const { isMobile } = useSidebar();
   return (
     <main
       ref={ref}
       className={cn(
         "relative flex min-h-svh flex-1 flex-col bg-background",
         "peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow",
+         isMobile && "peer-data-[collapsible=icon]:pr-[--sidebar-width-icon]",
         className
       )}
       {...props}
@@ -584,7 +620,7 @@ const SidebarMenuButton = React.forwardRef<
         <TooltipContent
           side="right"
           align="center"
-          hidden={state !== "collapsed" || isMobile}
+          hidden={state !== "collapsed" && !isMobile}
           {...tooltip}
         />
       </Tooltip>
