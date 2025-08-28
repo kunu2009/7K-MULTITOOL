@@ -35,7 +35,25 @@ export default function ToolsLayout({
   return (
     <SidebarProvider defaultOpen={true}>
       <div className="flex min-h-screen">
-        <Sidebar side="left" collapsible="icon" className="hidden md:flex">
+        <SidebarInset className="flex-1">
+          <header className="flex h-14 items-center justify-between border-b bg-background px-4 md:px-6">
+            <div className="md:hidden">
+              <SidebarTrigger />
+            </div>
+             <div className="flex items-center gap-4">
+              <Link href="/tools" className="flex items-center gap-2 md:hidden">
+                <Logo className="size-6 text-primary" />
+                <span className="font-semibold">7K MultiTool</span>
+              </Link>
+            </div>
+            <ThemeToggle />
+          </header>
+          <main className="flex-1 overflow-auto p-4 md:p-6">
+            {children}
+          </main>
+        </SidebarInset>
+
+        <Sidebar side="right" collapsible="icon" className="hidden md:flex">
           <SidebarHeader>
             <div className="flex items-center gap-2">
               <Logo className="size-7 text-primary" />
@@ -55,7 +73,7 @@ export default function ToolsLayout({
                         disabled={!tool.implemented}
                         tooltip={{
                           children: tool.name,
-                          side: 'right',
+                          side: 'left',
                           align: 'center',
                         }}
                       >
@@ -79,26 +97,8 @@ export default function ToolsLayout({
           </SidebarFooter>
         </Sidebar>
 
-        <div className="flex flex-1 flex-col">
-          <header className="flex h-14 items-center justify-between border-b bg-background px-4 md:px-6">
-            <div className="md:hidden">
-              <SidebarTrigger />
-            </div>
-            <div className="flex items-center gap-4">
-              <Link href="/tools" className="flex items-center gap-2 md:hidden">
-                <Logo className="size-6 text-primary" />
-                <span className="font-semibold">7K MultiTool</span>
-              </Link>
-            </div>
-            <ThemeToggle />
-          </header>
-          <main className="flex-1 overflow-auto p-4 md:p-6">
-            {children}
-          </main>
-        </div>
-      </div>
        <div className="md:hidden">
-         <Sidebar side="left" collapsible="offcanvas">
+         <Sidebar side="right" collapsible="offcanvas">
             <SidebarHeader>
                 <div className="flex items-center gap-2">
                     <Logo className="size-7 text-primary" />
@@ -137,6 +137,7 @@ export default function ToolsLayout({
              </SidebarFooter>
          </Sidebar>
        </div>
+      </div>
     </SidebarProvider>
   );
 }
