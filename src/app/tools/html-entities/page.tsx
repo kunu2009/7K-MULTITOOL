@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -10,10 +11,9 @@ import { toast } from '@/hooks/use-toast';
 import { LegalDisclaimer } from '@/components/legal-disclaimer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
-// Helper functions are now defined outside and before the component.
+// Helper functions defined at the top level of the module.
 const encodeEntities = (text: string) => {
-  // This check is necessary to prevent errors during server-side rendering,
-  // though for client components it's mainly a safeguard.
+  // This check prevents errors during server-side rendering.
   if (typeof document === 'undefined') return '';
   const element = document.createElement('div');
   element.innerText = text;
